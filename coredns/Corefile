@@ -1,0 +1,12 @@
+. {
+  reload 10s
+  log
+  errors
+  etcd vrmln.nl {
+    fallthrough
+    path /internaldns
+    endpoint http://10.0.6.7:2379
+    upstream
+  }
+  forward . 127.0.0.1:5353
+}

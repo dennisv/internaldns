@@ -1,0 +1,9 @@
+etcd_endpoint = "http://127.0.0.1:2379"
+
+[hosts]
+
+[hosts."home.vrmln.nl"]
+ipaddress = "10.0.6.7"
+
+[hosts."vrmln.nl"]
+ipaddress = "10.0.6.9"

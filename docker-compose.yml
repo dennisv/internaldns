@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  etcd:
+    image: quay.io/coreos/etcd:v3.3
+    ports:
+      - "2379:2379"
+    command: /usr/local/bin/etcd --advertise-client-urls http://0.0.0.0:2379 --listen-client-urls http://0.0.0.0:2379
+  coredns:
+    image: coredns/coredns:1.4.0
+    volumes:
+      - ./coredns/Corefile:/Corefile
+    links:
+      - "etcd"
+    ports:
+      - "53:53"
+      - "53:53/udp"
+    command: -conf /Corefile
